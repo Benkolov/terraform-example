@@ -9,7 +9,7 @@ permissions:
   contents: read
 
 env:
-  ARM_CLIENT_ID: ${{ secret.AZURE.CLIENT_ID }}
+  ARM_CLIENT_ID: ${{ secret.AZURE_CLIENT_ID }}
   ARM_CLIENT_SECRET: ${{ secret.AZURE_CLIENT_SECRET }}
   ARM_SUBSCRIPTION_ID: ${{ secret.AZURE_SUBSCRIPTION_ID }}
   ARM_TENANT_ID: ${{ secret.AZURE_TENANT_ID }}
