@@ -5,6 +5,12 @@ terraform {
       version = "3.89.0"
     }
   }
+  backend "azurerm" {
+    resource_group_name  = "StorageRG"
+    storage_account_name = "taskboardstorage"
+    container_name       = "taskboardcontainer"
+    key                  = "terraform.tfstate"
+  }
 }
 
 provider "azurerm" {
@@ -59,11 +65,12 @@ resource "azurerm_mssql_server" "mssql" {
 }
 
 resource "azurerm_mssql_database" "database" {
-  name           = "${var.sql_database_name}-${random_integer.ri.result}"
-  server_id      = azurerm_mssql_server.mssql.id
-  collation      = "SQL_Latin1_General_CP1_CI_AS"
-  license_type   = "LicenseIncluded"
-  max_size_gb    = 1
+  name         = "${var.sql_database_name}-${random_integer.ri.result}"
+  server_id    = azurerm_mssql_server.mssql.id
+  collation    = "SQL_Latin1_General_CP1_CI_AS"
+  license_type = "LicenseIncluded"
+  max_size_gb  = 1
+
   sku_name       = "Basic"
   zone_redundant = false
 }
