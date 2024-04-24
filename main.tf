@@ -5,12 +5,7 @@ terraform {
       version = "3.89.0"
     }
   }
-  backend "azurerm" {
-    storage_account_name = "taskboardstorage"
-    container_name       = "taskboardcontainer"
-    key                  = "terraform.tfstate"
-  }
-}
+ }
 
 provider "azurerm" {
   features {}
